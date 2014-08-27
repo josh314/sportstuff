@@ -1,0 +1,9 @@
+SportsStuff
+=====================================================================
+
+Demo web-site for Squark. Uses UI Bootstrap for the front-end. Some 
+3rd-party libraries are included in unminimized form.
+
+================ Install Instructions ===============================
+
+Place files into a publicly accessible folder on your server.
