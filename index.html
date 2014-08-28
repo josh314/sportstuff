@@ -35,11 +35,11 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">{{header.title}}</a>
+            <a class="navbar-brand navbar-left" href="#">{{header.title}}</a>
           </div>
           <!-- Non-collapsed header for most sizes -->
           <nav class="hidden-xs">
-            <ul class="nav navbar-nav" class="pull-right">
+            <ul class="nav navbar-nav navbar-right">
               <li ng-repeat="nav in header.simpleNavs">
                 <a ng-href="{{nav.url}}">{{nav.title}}</a>
               </li>
@@ -56,7 +56,7 @@
             </ul>
           </nav>
           <!-- Collapsing header with stacked navs for XS size-->
-          <nav collapse="header.isCollapsed" style="height: 0px;">
+          <nav collapse="header.isCollapsed" style="height: 0px;" class="hidden-sm hidden-md hidden-lg">
             <ul class="nav navbar-nav">
               <li ng-repeat="nav in header.simpleNavs">
                 <a ng-href="{{nav.url}}" ng-click="header.collapse()">{{nav.title}}</a>
@@ -76,6 +76,19 @@
         </div>
       </div>
     </header>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-6">
+          <div class="well">
+            <h2>Welcome to SportsStuff!</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius ullam dolorem temporibus repellendus assumenda illum ratione, eum sunt quia quae eos libero exercitationem nisi, accusamus, maxime labore. Culpa cumque nisi doloribus provident, aperiam. Unde voluptatibus eligendi, rerum non, ratione alias fugiat eius similique, nulla dolor perferendis ullam praesentium officia molestias voluptates necessitatibus facere velit. Fugit perspiciatis, quisquam, iusto eligendi blanditiis quia esse commodi sunt repudiandae itaque omnis veniam vel voluptates fugiat maiores debitis soluta optio nostrum odio aliquid quae ad! Eum aspernatur animi facere id beatae, vel vero velit quisquam aliquid, nisi! Consectetur itaque et harum voluptate deleniti officia, quia.
+            </p>
+          </div>
+        </div>
+        <div class="col-xs-6"><img src="http://lorempixel.com/640/640/sports/1" class="img-thumbnail img-responsive"></div>
+      </div>
+    </div>
     <!-- JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
@@ -83,8 +96,8 @@
     <!-- CDN (for prod)
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.18/angular.min.js"></script>
-    <script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.11.0.min.js"></script
-      >-->
+    <script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.11.0.min.js"></script>
+      -->
     <!-- Local copy (for dev)-->
     <script src="3rd-party/jquery.js"></script>
     <script src="3rd-party/angular.js"></script>
