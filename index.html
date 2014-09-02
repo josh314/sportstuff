@@ -79,17 +79,73 @@
 
     <div class="container">
       <div class="row">
-        <div class="col-xs-6">
+        <div class="col-xs-12 col-sm-6">
+          <h1>Welcome to SportsStuff!</h1>
           <div class="well">
-            <h2>Welcome to SportsStuff!</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius ullam dolorem temporibus repellendus assumenda illum ratione, eum sunt quia quae eos libero exercitationem nisi, accusamus, maxime labore. Culpa cumque nisi doloribus provident, aperiam. Unde voluptatibus eligendi, rerum non, ratione alias fugiat eius similique, nulla dolor perferendis ullam praesentium officia molestias voluptates necessitatibus facere velit. Fugit perspiciatis, quisquam, iusto eligendi blanditiis quia esse commodi sunt repudiandae itaque omnis veniam vel voluptates fugiat maiores debitis soluta optio nostrum odio aliquid quae ad! Eum aspernatur animi facere id beatae, vel vero velit quisquam aliquid, nisi! Consectetur itaque et harum voluptate deleniti officia, quia.
-            </p>
+            <h3 class="text-warning">The premier portal for stuff about sports:</h3>
+            <ul>
+              <li class="h5 text-warning">Latest News &amp; Rumors!</li>
+              <li class="h5 text-warning">The Best Analysis &amp; Commentary!</li>
+              <li class="h5 text-warning">High Definition Video of Highlights &amp; Interviews!</li>
+              <li class="h5 text-warning">Exclusive Pics and Wallpapers!</li>
+            </ul>  
+          </div>
+          <h3 class="text-success">Subscribe for exclusive content!</h3>
+          <div ng-controller="SubscribeModalCtrl">
+            <script type="text/ng-template" id="subscribeModalContent.html">
+              <div class="modal-header">
+                <h3 class="modal-title">{{title}}</h3>
+              </div>
+              <div class="modal-body">
+              <p>{{copy}}</p>
+              </div>
+              <div class="modal-footer">
+                <button class="btn btn-primary" ng-click="ok()">OK, Let&apos;s Do This</button>
+                <button class="btn btn-warning" ng-click="cancel()">I Changed My Mind, Maybe Later</button>
+              </div>
+            </script>
+            <button class="btn btn-success btn-lg" ng-click="open('lg')">Subscribe Now!</button>
           </div>
         </div>
-        <div class="col-xs-6"><img src="http://lorempixel.com/640/640/sports/1" class="img-thumbnail img-responsive"></div>
+        <div class="col-xs-12 col-sm-6"><img src="http://lorempixel.com/640/480/sports/1" class="img-thumbnail img-responsive"></div>
       </div>
     </div>
-    <!-- JavaScript
+    <hr/>
+    
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12" ng-controller="FeatureCarouselCtrl">
+          <h1>Today's Top Features</h1>
+            <carousel interval="interval">
+              <slide ng-repeat="item in items">
+                <div>
+                  <script type="text/ng-template" id="featureModalContent.html">
+                   <div class="modal-body">
+                      <img class="pull-left article-img" ng-src="{{item.img}}">
+                      <h3>{{item.headline}}</h3>
+                      <p>{{item.text}}</p>
+                    </div>
+                    <div class="modal-footer">
+                      <button class="btn btn-primary" ng-click="prev()">Previous</button>
+                      <button class="btn btn-warning" ng-click="close()">Exit</button>
+                      <button class="btn btn-primary" ng-click="next()">Next</button>
+                    </div>
+                  </script>
+                  <a>
+                    <img ng-click="open($index)" ng-src="{{item.img}}" class="img-thumbnail">
+                  </a>
+                </div>
+                <div class="carousel-caption">
+                  <h4>Feature {{$index+1}}</h4>
+                  <p>{{item.caption}}</p>
+                </div>
+              </slide>
+            </carousel>
+        </div>
+      </div>
+    </div>
+
+<!-- JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <!--Load third-party scripts either via CDN or local copy-->
