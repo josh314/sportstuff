@@ -1,17 +1,18 @@
 var app = angular.module('myApp', ['ui.bootstrap']);
-app.controller('MetaCtrl', function() {
-  this.title = 'SportsStuff | Your One-Stop Shop for Stuff About Sports';
+/* HTML <head> controller */
+app.controller('MetaCtrl', function($scope) {
+  $scope.title = 'SportsStuff | Your One-Stop Shop for Stuff About Sports';
 });
-
-app.controller('HeaderCtrl', function() {
-  this.title = 'SportsStuff';
-  this.simpleNavs = [
+/************** Topbar Controller **********************************************/
+app.controller('HeaderCtrl', function($scope) {
+  $scope.title = 'SportsStuff';
+  $scope.simpleNavs = [
     {title: 'Baseball', url: '#baseball' },
     {title: 'Basketball', url:'#basketball'},
     {title: 'Football', url:'#football'},
     {title: 'Hockey', url:'#hockey'},
   ];
-  this.dropNavs = [
+  $scope.dropNavs = [
     {
       title:'Other',
       drops: [
@@ -29,18 +30,17 @@ app.controller('HeaderCtrl', function() {
       ],
     },
   ];
-  this.isCollapsed = true;
-  this.toggleCollapse  = function() { this.isCollapsed = !this.isCollapsed };
-  this.collapse = function() {this.isCollapsed = true;};
-  this.expand = function() {this.isCollapsed = false;};
+  $scope.isCollapsed = true;
+  $scope.toggleCollapse  = function() { $scope.isCollapsed = !$scope.isCollapsed };
+  $scope.collapse = function() {$scope.isCollapsed = true;};
+  $scope.expand = function() {$scope.isCollapsed = false;};
 });
-
-
-var SubscribeModalCtrl = function($scope, $modal, $log) {
+/******************** Subscribe Modal ************************************/
+app.controller('SubscribeModalCtrl', function($scope, $modal, $log) {
   $scope.open = function (size) {
     var subscribeModalInstance = $modal.open({
       templateUrl: 'subscribeModalContent.html',
-      controller: SubscribeModalInstanceCtrl,
+      controller: 'SubscribeModalInstanceCtrl',
       size: size,
     });
 
@@ -51,29 +51,27 @@ var SubscribeModalCtrl = function($scope, $modal, $log) {
       $log.info('Dismiss reason: ' + reason);
     });
   };
-};
-
-
+});
 // Please note that $modalInstance represents a modal window (instance) dependency.
 // It is not the same as the $modal service used above.
-
-var SubscribeModalInstanceCtrl = function ($scope, $modalInstance) {
+app.controller('SubscribeModalInstanceCtrl', function ($scope, $modalInstance) {
 
   $scope.title = 'Subscribe to SportsStuff!';
   $scope.copy = 'You can get instant access to all of our exclusive content. Become a Premium Member of SportStuff for only $24.95 a month!';
 
   $scope.ok = function () {
-    /* TODO: forward onto a payment form */
+    // TODO: forward onto a payment form
     $modalInstance.close('ok button');
   };
 
   $scope.cancel = function () {
     $modalInstance.dismiss('cancel button');
   };
+});
 
-};
 
-var FeatureCarouselCtrl = function($scope, $modal) {
+/******************************  Carousel & associated Modals *******************************/
+app.controller('FeatureCarouselCtrl', function($scope, $modal) {
 
   $scope.interval = 5000;
   $scope.items = [
@@ -105,7 +103,7 @@ var FeatureCarouselCtrl = function($scope, $modal) {
   $scope.open = function (index) {
     var featureModalInstance = $modal.open({
       templateUrl: 'featureModalContent.html',
-      controller: FeatureModalInstanceCtrl,
+      controller: 'FeatureModalInstanceCtrl',
       size: 'lg',
       resolve: {
         items: function () {
@@ -117,9 +115,8 @@ var FeatureCarouselCtrl = function($scope, $modal) {
       }
     });
   }
-};
-
-var FeatureModalInstanceCtrl = function ($scope, $modalInstance, items, index) {
+});
+app.controller('FeatureModalInstanceCtrl', function ($scope, $modalInstance, items, index) {
   $scope.item = items[index];
   $scope.prev = function() {
     index = (index-1);
@@ -133,4 +130,4 @@ var FeatureModalInstanceCtrl = function ($scope, $modalInstance, items, index) {
   $scope.close = function () {
     $modalInstance.close('ok button');
   };
-};
+});
